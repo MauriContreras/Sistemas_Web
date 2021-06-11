@@ -1,0 +1,74 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora con JQuery </title>
+</head>
+<body>
+  <form>
+    <h3 style="color:orange;">Calculadora</h3>
+    <label for="num1">Introduce el primer numero: </label>
+    <input type="text" id="num1">
+    <br> <br>
+    <label for="num2">Introduce el segundo numero: </label>
+    <input type="text" id="num2">
+    <br> <br>
+    <label for="operador">Elige el operador: </label>
+    <select name ="operador" id="operador">
+      <option value="suma">+</option>
+      <option value="resta">-</option>
+      <option value="mul">*</option>
+      <option value="div">/</option>
+    </select>
+    <br> <br>
+    <label for="esperado">Introduzca su resultado: </label>
+    <input type="text" id="esperado">
+    <label id="respuesta"></label>
+    <br> <br>
+    <input type="button" value="Calcular" id="Calcular" onclick="calcular()">
+    <input type="reset" value="Borrar" id="limpiar" onclick="limpiar()">
+  </form>
+  <script>
+    $(document).ready (function() {
+        $("#Calcular").click(function() {
+            var1 = parseInt($("#num1").val());
+            var2 = parseInt($("#num2").val());
+            operador = $("#operador").val();
+            esperado = parseInt($("#esperado").val());
+            if (isNaN(var1) || isNaN(var2) || isNaN(esperado)){
+                alert("Es necesario llenar todo los campos y que sean números enteros");
+            } else {
+                switch(operador){
+                case "suma":
+                    resultado = var1 + var2;
+                    break;
+                case "resta":
+                    resultado = var1 - var2;
+                    break;
+                case "mul":
+                    resultado = var1 * var2;
+                    break;
+                case "div":
+                    resultado = var1 / var2;
+                    break;
+                }
+            respuesta = $("#respuesta");
+            if (resultado == esperado) {
+                $("#respuesta").text("El resultado es correcto");
+            } else {
+                $("#respuesta").text("El resultado no es correcto");
+            }
+            }
+        });
+    });
+  
+  $(document).ready(function(){
+    $("#limpiar").click(function() {
+    $("#respuesta").text("");
+    });
+  });
+  </script>
+</body>
+</html>

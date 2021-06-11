@@ -1,0 +1,69 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora con JavaScript </title>
+</head>
+<body>
+  <form>
+    <h3 style="color:orange;">Calculadora</h3>
+    <label for="num1">Introduce el primer numero: </label>
+    <input type="text" id="num1">
+    <br> <br>
+    <label for="num2">Introduce el segundo numero: </label>
+    <input type="text" id="num2">
+    <br> <br>
+    <label for="operador">Elige el operador: </label>
+    <select name ="operador" id="operador">
+      <option value="suma">+</option>
+      <option value="resta">-</option>
+      <option value="mul">*</option>
+      <option value="div">/</option>
+    </select>
+    <br> <br>
+    <label for="esperado">Introduzca su resultado: </label>
+    <input type="text" id="esperado">
+    <label id="respuesta"></label>
+    <br> <br>
+    <input type="button" value="Calular" onclick="calcular()">
+    <input type="reset" value="Borrar" onclick="limpiar()">
+  </form>
+  <script>
+    function calcular(){
+      var1 = parseInt(document.getElementById("num1").value);
+      var2 = parseInt(document.getElementById("num2").value);
+      operador = document.getElementById("operador").value;
+      esperado = parseInt(document.getElementById("esperado").value);
+      if (isNaN(var1) || isNaN(var2) || isNaN(esperado)){
+        alert("Es necesario llenar todo los campos y que sean números enteros");
+      } else {
+        switch(operador){
+          case "suma":
+            resultado = var1 + var2;
+            break;
+          case "resta":
+            resultado = var1 - var2;
+            break;
+          case "mul":
+            resultado = var1 * var2;
+            break;
+          case "div":
+            resultado = var1 / var2;
+            break;
+        }
+      respuesta = document.getElementById("respuesta");
+      if (resultado == esperado) {
+        respuesta.innerHTML = "El resultado es correcto";
+      } else {
+        respuesta.innerHTML = "El resultado no es correcto";
+      }
+    }
+  }
+  function limpiar(){
+    respuesta = document.getElementById("respuesta");
+    respuesta.innerHTML = "";
+  }
+  </script>
+</body>
+</html>
